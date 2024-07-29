@@ -104,6 +104,14 @@ public class OwnArrayList<E> implements Collection<E> {
     }
 
     @Override
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            arrayData[i] = null;
+        }
+        size = 0;
+    }
+
+    @Override
     public boolean contains(Object o) {
         return false;
     }
@@ -141,10 +149,5 @@ public class OwnArrayList<E> implements Collection<E> {
     @Override
     public boolean retainAll(Collection<?> c) {
         return false;
-    }
-
-    @Override
-    public void clear() {
-
     }
 }
