@@ -14,7 +14,7 @@ public class Executor {
         System.out.println(array.get(0));
         System.out.println(array.size());
         System.out.println(array.add("String1"));
-        System.out.println(array.remove("String1"));
+        System.out.println(array.set(1, "String2"));
         int i = 0;
 //                List<Integer> array1 = new ArrayList<Integer>();
 //        array.add(1);

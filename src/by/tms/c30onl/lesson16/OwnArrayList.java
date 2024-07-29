@@ -122,6 +122,11 @@ public class OwnArrayList<E> implements Collection<E> {
 
     @Override
     public boolean contains(Object o) {
+        for (int i = 0; i < size; i++) {
+            if (o.equals(arrayData[i])) {
+                return true;
+            }
+        }
         return false;
     }
 
