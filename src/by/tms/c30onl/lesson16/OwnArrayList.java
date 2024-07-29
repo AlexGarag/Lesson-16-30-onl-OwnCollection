@@ -5,17 +5,15 @@ import java.util.Iterator;
 
 public class OwnArrayList<E> implements Collection<E> {
     private int size;
-    private static final int DEFAULT_CAPACITY = 16;
     private int capacity;
-    private static final Object[] EMPTY_ELEMENT_DATA = {};
-    private static final Object[] DEFAULT_CAPACITY_EMPTY_ELEMENT_DATA = {};
+    private static final Object[] EMPTY_ARRAY_DATA = {};
     private Object[] arrayData;
 
     public OwnArrayList(int requestedCapacity) {
         if (requestedCapacity > 0) {
             arrayData = new Object[requestedCapacity];
         } else if (requestedCapacity == 0) {
-            arrayData = EMPTY_ELEMENT_DATA;
+            arrayData = EMPTY_ARRAY_DATA;
         } else {
             throw new IllegalArgumentException("Illegal Capacity: " + requestedCapacity);
         }
