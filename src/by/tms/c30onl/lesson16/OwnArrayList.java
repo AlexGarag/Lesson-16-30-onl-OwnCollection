@@ -56,6 +56,15 @@ public class OwnArrayList<E> implements Collection<E> {
         return (E) arrayData[index];
     }
 
+    public E set(int index, E element) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        E old = (E) arrayData[index];
+        arrayData[index] = element;
+        return old;
+    }
+
     public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
