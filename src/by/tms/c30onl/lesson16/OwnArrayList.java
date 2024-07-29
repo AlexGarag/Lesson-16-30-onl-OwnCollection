@@ -2,8 +2,10 @@ package by.tms.c30onl.lesson16;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
-public class OwnArrayList<E> implements Collection<E> {
+public class OwnArrayList<E> implements List<E> {
     private int size;
     private int capacity;
     private static final Object[] EMPTY_ARRAY_DATA = {};
@@ -63,6 +65,11 @@ public class OwnArrayList<E> implements Collection<E> {
         return old;
     }
 
+    @Override
+    public void add(int index, E element) {
+
+    }
+
     public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -81,6 +88,31 @@ public class OwnArrayList<E> implements Collection<E> {
         arrayData = newArray;
         size--;
         return element;
+    }
+
+    @Override
+    public int indexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        return 0;
+    }
+
+    @Override
+    public ListIterator<E> listIterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<E> listIterator(int index) {
+        return null;
+    }
+
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        return List.of();
     }
 
     @Override
@@ -150,6 +182,11 @@ public class OwnArrayList<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends E> c) {
         return false;
     }
 
