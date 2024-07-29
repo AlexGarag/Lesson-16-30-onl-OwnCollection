@@ -33,7 +33,6 @@ public class OwnArrayList<E> implements Collection<E> {
             }
             arrayData = newArray;
         }
-        int i = 0;
         arrayData[size++] = e;
         return true;
     }
@@ -55,6 +54,40 @@ public class OwnArrayList<E> implements Collection<E> {
             throw new IndexOutOfBoundsException();
         }
         return (E) arrayData[index];
+    }
+
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        E element = (E) arrayData[index];
+        arrayData[index] = null;
+        Object[] newArray = new Object[capacity];
+        for (int i = 0; i < index; i++) {
+            newArray[i] = arrayData[i];
+            arrayData[i] = null;
+        }
+        for (int i = index + 1; i < capacity; i++) {
+            newArray[i - 1] = arrayData[i];
+            arrayData[i] = null;
+        }
+        arrayData = newArray;
+        size--;
+        return element;
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        if (o == null) {
+            throw new NullPointerException();
+        }
+        for (int i = 0; i < size; i++) {
+            if (o.equals(arrayData[i])) {
+                remove(i);
+                break;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -88,11 +121,6 @@ public class OwnArrayList<E> implements Collection<E> {
     @Override
     public <T> T[] toArray(T[] a) {
         return null;
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
     }
 
     @Override
