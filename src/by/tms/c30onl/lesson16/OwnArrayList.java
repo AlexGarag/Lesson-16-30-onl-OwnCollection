@@ -26,35 +26,28 @@ public class OwnArrayList<E> implements List<E> {
 
     @Override
     public boolean add(E e) {
-        if (size == capacity) {
-            capacity = capacity * 2;
-            Object[] newArray = new Object[capacity];
-            for (int i = 0; i < size; i++) {
-                newArray[i] = arrayData[i];
-                arrayData[i] = null;
-            }
-            arrayData = newArray;
-        }
+        if (size == capacity) expand();
         arrayData[size++] = e;
         return true;
     }
 
     @Override
-    public void add(int index, E element) { // todo сделать!
-
+    public void add(int index, E element) {
+        if (size == capacity) expand();
+        for (int i = index; i < size; i++) arrayData[i] = arrayData[i - 1];
+        arrayData[index] = element;
     }
 
-//    private void expand() {
+    private void expand() {
 //        int ii = capacity >> 1;
-//        capacity = capacity + ii; //capacity >> 1;
-//        Object[] newArray = new Object[capacity];
-//        for (int i = 0; i < size; i++) {
-//            newArray[i] = arrayData[i];
-//            arrayData[i] = null;
-//        }
-//        arrayData = newArray;
-//        int i = 0;
-//    }
+        capacity = capacity * 2;
+        Object[] newArray = new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newArray[i] = arrayData[i];
+            arrayData[i] = null;
+        }
+        arrayData = newArray;
+    }
 
     public E get(int index) {
         if (check(index)) throw new IndexOutOfBoundsException();
