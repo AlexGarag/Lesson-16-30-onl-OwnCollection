@@ -38,17 +38,6 @@ public class OwnArrayList<E> implements List<E> {
         arrayData[index] = element;
     }
 
-    private void expand() {
-//        int ii = capacity >> 1;
-        capacity = capacity * 2;
-        Object[] newArray = new Object[capacity];
-        for (int i = 0; i < size; i++) {
-            newArray[i] = arrayData[i];
-            arrayData[i] = null;
-        }
-        arrayData = newArray;
-    }
-
     public E get(int index) {
         if (check(index)) throw new IndexOutOfBoundsException();
         return (E) arrayData[index];
@@ -81,12 +70,18 @@ public class OwnArrayList<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0; i < size; i++) {
+            if (o.equals(arrayData[i])) return i;
+        }
+        return -1;
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        for (int i = size - 1; i > -1; i--) {
+            if (o.equals(arrayData[i])) return i;
+        }
+        return -1;
     }
 
     @Override
@@ -188,6 +183,16 @@ public class OwnArrayList<E> implements List<E> {
     @Override
     public boolean retainAll(Collection<?> c) {
         return false;
+    }
+
+    private void expand() {
+        capacity = capacity * 2;
+        Object[] newArray = new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newArray[i] = arrayData[i];
+            arrayData[i] = null;
+        }
+        arrayData = newArray;
     }
 
     private boolean check(int index) {

@@ -20,7 +20,7 @@ public class Executor {
         System.out.println(array.size());
         System.out.println(array.add("String1"));
         System.out.println(array.set(1, "String2"));
-        System.out.println(array);
+        System.out.println(array.indexOf("String0"));
         int i = 0;
 
 //        Iterator<String> iterator = array.iterator();
