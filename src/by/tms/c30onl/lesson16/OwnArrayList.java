@@ -3,10 +3,15 @@ package by.tms.c30onl.lesson16;
 import java.util.*;
 
 public class OwnArrayList<E> implements List<E> {
+    private static final Object[] EMPTY_ARRAY_DATA = {};
+    private static final int DEFAULT_CAPACITY = 10;
     private int size;
     private int capacity;
-    private static final Object[] EMPTY_ARRAY_DATA = {};
     private Object[] arrayData;
+
+    public OwnArrayList() {
+        arrayData = EMPTY_ARRAY_DATA;
+    }
 
     public OwnArrayList(int requestedCapacity) {
         if (requestedCapacity > 0) {
@@ -34,6 +39,11 @@ public class OwnArrayList<E> implements List<E> {
         return true;
     }
 
+    @Override
+    public void add(int index, E element) { // todo сделать!
+
+    }
+
 //    private void expand() {
 //        int ii = capacity >> 1;
 //        capacity = capacity + ii; //capacity >> 1;
@@ -56,11 +66,6 @@ public class OwnArrayList<E> implements List<E> {
         E old = (E) arrayData[index];
         arrayData[index] = element;
         return old;
-    }
-
-    @Override
-    public void add(int index, E element) {
-
     }
 
     public E remove(int index) {
@@ -139,6 +144,7 @@ public class OwnArrayList<E> implements List<E> {
             arrayData[i] = null;
         }
         size = 0;
+        capacity = DEFAULT_CAPACITY;
     }
 
     @Override

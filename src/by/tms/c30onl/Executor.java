@@ -12,6 +12,7 @@ import java.util.List;
 public class Executor {
     public static void main(String[] args) {
         OwnArrayList<String> array = new OwnArrayList(1);
+        OwnArrayList<String> array2 = new OwnArrayList();
 
         System.out.println(array.size());
         System.out.println(array.add("String0"));
