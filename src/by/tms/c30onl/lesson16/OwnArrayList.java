@@ -50,16 +50,12 @@ public class OwnArrayList<E> implements List<E> {
 //    }
 
     public E get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        if (!check(index)) throw new IndexOutOfBoundsException();
         return (E) arrayData[index];
     }
 
     public E set(int index, E element) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        if (!check(index)) throw new IndexOutOfBoundsException();
         E old = (E) arrayData[index];
         arrayData[index] = element;
         return old;
@@ -71,9 +67,7 @@ public class OwnArrayList<E> implements List<E> {
     }
 
     public E remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        if (!check(index)) throw new IndexOutOfBoundsException();
         E element = (E) arrayData[index];
         arrayData[index] = null;
         Object[] newArray = new Object[capacity];
@@ -200,4 +194,10 @@ public class OwnArrayList<E> implements List<E> {
         return false;
     }
 
+    private boolean check(int index) {
+        if (index < 0 || index >= size) {
+            return false;
+        }
+        return true;
+    }
 }
