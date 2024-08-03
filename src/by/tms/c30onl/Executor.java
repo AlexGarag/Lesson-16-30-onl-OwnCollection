@@ -19,22 +19,23 @@ public class Executor {
         System.out.println(array.size());
         System.out.println(array.add("String1"));
         System.out.println(array.set(1, "String2"));
+        System.out.println(array);
         int i = 0;
 
 //        Iterator<String> iterator = array.iterator();
 //        while (iterator.hasNext()) {
 //            System.out.println(iterator.next());
 //        }
-                List<Integer> array1 = new ArrayList<>();
-        array1.add(1);
-        array1.add(2);
-        array1.add(3);
-        array1.add(4);
+//                List<Integer> array1 = new ArrayList<>();
+//        array1.add(1);
+//        array1.add(2);
+//        array1.add(3);
+//        array1.add(4);
 
-        Iterator<Integer> iterator = array1.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
+//        Iterator<Integer> iterator = array1.iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+//        }
 //        array.remove(2);
 
 

@@ -1,9 +1,6 @@
 package by.tms.c30onl.lesson16;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class OwnArrayList<E> implements List<E> {
     private int size;
@@ -50,12 +47,12 @@ public class OwnArrayList<E> implements List<E> {
 //    }
 
     public E get(int index) {
-        if (!check(index)) throw new IndexOutOfBoundsException();
+        if (check(index)) throw new IndexOutOfBoundsException();
         return (E) arrayData[index];
     }
 
     public E set(int index, E element) {
-        if (!check(index)) throw new IndexOutOfBoundsException();
+        if (check(index)) throw new IndexOutOfBoundsException();
         E old = (E) arrayData[index];
         arrayData[index] = element;
         return old;
@@ -67,7 +64,7 @@ public class OwnArrayList<E> implements List<E> {
     }
 
     public E remove(int index) {
-        if (!check(index)) throw new IndexOutOfBoundsException();
+        if (check(index)) throw new IndexOutOfBoundsException();
         E element = (E) arrayData[index];
         arrayData[index] = null;
         Object[] newArray = new Object[capacity];
@@ -195,9 +192,11 @@ public class OwnArrayList<E> implements List<E> {
     }
 
     private boolean check(int index) {
-        if (index < 0 || index >= size) {
-            return false;
-        }
-        return true;
+        return index < 0 || index >= size;
+    }
+
+    @Override
+    public String toString() {
+        return "OwnArrayList = " + Arrays.toString(arrayData);
     }
 }
